@@ -3,7 +3,8 @@ var app = express()
 
 
 module.exports.post = function(req, res){
-    console.log('hit', res.send('hit it'))
+    console.log('hit', req.params.url);
+    // res.send(req.params)
 
-    res.render("index.html");
+    // res.render("public/index.html");
 } 

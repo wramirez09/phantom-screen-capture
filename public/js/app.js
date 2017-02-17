@@ -1,32 +1,53 @@
 
-$(function(){
-
-    var $form = $(".pure-form");
-    if($form){
+$(function () {
+ 
+    var formselector = ".pure-form";
+    var $form = $(formselector);
+    var data = data || {};
+    if ($form) {
         console.log("form", $form);
     }
 
-    $form.submit(function(e){
+    $form.submit(function (e) {
         console.log("form submit event", e)
-        handleSubmit(e);
+        var $formObject = $(formselector + " :input");
+          console.log("$(formselector)", $(formselector + " :input"))
+        getFormValues($formObject);
 
     });
 
-    function init(){
+    function init() {
         console.log("init");
-        logger(":logger called")
+        // logger(":logger called")
     }
 
     init();
 
-    function logger(msg){
-        console.log("msg:", msg);
+    function getFormValues(formObject){
+        console.log(formObject);
+        formObject.each(
+            function(i, e){
+                // console.log(i,e, "each");
+                data.push(data, e.val());
+                console.log(data);
+            }
+        );
+    
     }
 
 
-    function handleSubmit(event){
+    function submitForm(event) {
         // event.preventdefault();
         console.log("event");
+        $.ajax({
+            method:"POST",
+            url: "/phantom-capture/",
+            data: {
+                "test":"test"
+            }
+        }).done(function () {
+            $(this).addClass("done");
+        });
 
     }
 
