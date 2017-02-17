@@ -1,0 +1,78 @@
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+
+  <title>The HTML5 Herald</title>
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="https://unpkg.com/purecss@0.6.2/build/pure-min.css" integrity="sha384-UQiGfs9ICog+LwheBSRCt1o5cbyKIHbwjWscjemyBMT9YCUMZffs6UqUTd0hObXD"
+    crossorigin="anonymous">
+
+    <!--[if lt IE 9]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
+  <![endif]-->
+
+    <style>
+      .content {
+        padding-left: 2em;
+        padding-right: 2em;
+      }
+      
+      h2 {
+        text-align: center;
+        color: gray;
+      }
+    </style>
+</head>
+
+
+<body>
+
+  <div class="content">
+
+    <div class="pure-g">
+      <div class="pure-u-1-2">
+        <h1>phantom screen shot capture</h1>
+        <form class="pure-form pure-form-stacked" action="/phantom-capture/" method="POST" >
+          <fieldset>
+            <legend>screen shot parameters</legend>
+
+            <label for="url">URL</label>
+            <input name="url" id="url" type="url" placeholder="URL">
+            <span class="pure-form-message">This is a required field.</span>
+            <hr />
+            <br />
+            <label for="full-screen" class="pure-checkbox">
+            <input id="full-screen" type="checkbox"> Full page screen shot
+            <hr />
+            <br />
+            <label for="state">Mobile Device</label>
+            <select id="state">
+            <option>iPhone 5</option>
+            <option>iPhone 6</option>
+            <option>iPhone 7</option>
+        </select>
+            <hr />
+            <br />
+            </label>
+
+            <button type="submit" class="pure-button pure-button-primary">submit</button>
+          </fieldset>
+        </form>
+      </div>
+      <div class="pure-u-1-2">
+        <h2>preview</h2>
+      </div>
+    </div>
+  </div>
+  <script
+  src="https://code.jquery.com/jquery-3.1.1.min.js"
+  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  crossorigin="anonymous"></script>
+  <script src="./js/app.js"></script>
+</body>
+
+</html>
