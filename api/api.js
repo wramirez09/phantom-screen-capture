@@ -1,10 +1,14 @@
 var express = require('express')
-var app = express()
+var app = express();
+var phantom = require('phantom');
 
 
-module.exports.post = function(req, res){
-    console.log('hit', req.params.url);
-    // res.send(req.params)
+module.exports.post = function(req, res) {
 
-    // res.render("public/index.html");
-} 
+
+
+    console.log("query", req.query)
+    res.redirect('/');
+
+
+}

@@ -2,17 +2,23 @@ var express = require('express')
 var app = express()
 var api = require('./api/api')
 
+
 app.use(express.static('public'))
 
 
-app.get('/', function (req, res) {
-  // res.send('Hello World!')
-  console.log("index page hit");
-})
 
+// index page end point
+app.get('/', function(req, res) {
+    console.log("index page hit");
+});
 
-app.all("/phantom-capture/", api.post);
+// end point
+app.all("/phantom-capture/", function(req, res) {
 
-app.listen(3100, function () {
-  console.log('Example app listening on port 3000!')
+    api.post.bind(this)
+});
+
+// app listen
+app.listen(3100, function() {
+    console.log('app listening on port 3100!')
 })
