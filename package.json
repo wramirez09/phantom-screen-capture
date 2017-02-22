@@ -11,6 +11,10 @@
   "license": "MIT",
   "devDependencies": {
     "express": "^4.14.1",
+    "node-phantom": "^0.2.5",
+    "phantom": "^4.0.0"
+  },
+  "dependencies": {
     "phantom": "^4.0.0"
   }
 }
