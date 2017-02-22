@@ -8,7 +8,7 @@ module.exports.post = function(req, res) {
 
 
     console.log("query", req.query)
-    res.redirect('/');
+        /* req.query */
 
 
 }

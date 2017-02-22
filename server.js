@@ -1,24 +1,23 @@
-var express = require('express')
-var app = express()
-var api = require('./api/api')
+var express = require('express');
+var app = express();
+var api = require('./api/api');
 
 
-app.use(express.static('public'))
+
+function callback(req, res) {
+    console.log("index page hit");
+};
 
 
+app.use(express.static('public'));
 
 // index page end point
-app.get('/', function(req, res) {
-    console.log("index page hit");
-});
+app.all('/', callback);
 
-// end point
-app.all("/phantom-capture/", function(req, res) {
-
-    api.post.bind(this)
-});
+// phantom-capture end point
+app.all("/phantom-capture/", api.post.bind(this));
 
 // app listen
 app.listen(3100, function() {
     console.log('app listening on port 3100!')
-})
+});
