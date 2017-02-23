@@ -5,6 +5,7 @@ $(function() {
 
 
     $form.submit(function() {
+        // console.log($data)
         var $data = $form.serialize();
         console.log($data)
         submitForm($data);
