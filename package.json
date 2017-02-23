@@ -15,6 +15,7 @@
     "phantom": "^4.0.0"
   },
   "dependencies": {
-    "phantom": "^4.0.0"
+    "phantom": "^4.0.0",
+    "webshot": "^0.18.0"
   }
 }
