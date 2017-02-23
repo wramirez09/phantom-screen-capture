@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
 
-    <title>The HTML5 Herald</title>
+    <title>phantom screen shot </title>
     <meta name="description" content="">
     <meta name="author" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -24,6 +24,14 @@
             text-align: center;
             color: gray;
         }
+        
+        .image,
+        img {
+            position: relative;
+            display: block;
+            width: auto;
+            height: auto;
+        }
     </style>
 </head>
 
@@ -33,7 +41,7 @@
     <div class="content">
 
         <div class="pure-g">
-            <div class="pure-u-1-2">
+            <div class="pure-u-1-4">
                 <h1>phantom screen shot capture</h1>
                 <form action="" method="" id="form" class="pure-form pure-form-stacked">
                     <label class="">
@@ -92,9 +100,9 @@
 
                 </form>
             </div>
-            <div class="pure-u-1-2">
+            <div class="pure-u-3-4" id="imageCont">
                 <h2>preview</h2>
-                <img src="/images/site-placeholder@2x.png" class="image" />
+                <img src="/images/site-placeholder@2x.png" class="previewImage image" id="previewImage" />
             </div>
         </div>
     </div>

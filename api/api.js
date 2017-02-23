@@ -2,6 +2,11 @@ var express = require('express')
 var app = express();
 var webshot = require('webshot');
 
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+});
 
 
 module.exports.postIndex = function(req, res) {
@@ -9,28 +14,28 @@ module.exports.postIndex = function(req, res) {
 }
 
 module.exports.phantomscreencapture = function(req, res) {
-    console.log("phantomscreencapture", req.query.url);
-    var webshot = require('webshot');
+    console.log("phantomscreencapture", req.query);
 
-    var options = {
-        screenSize: {
-            width: 320,
-            height: 480
-        },
+    var urly = req.query.url,
+        userAgent = req.query.userAgent;
+
+    options = {
         shotSize: {
-            width: req.query.width,
-            height: req.query.height
+            width: req.query.width ? req.query.width : 'all',
+            height: req.query.height ? req.query.height : 'all'
         },
-        userAgent: 'Mozilla/5.0 (iPhone; U; CPU iPhone OS 3_2 like Mac OS X; en-us)' +
-            ' AppleWebKit/531.21.20 (KHTML, like Gecko) Mobile/7B298g'
+        userAgent: userAgent
     };
 
+    var filename = urly.replace(/^https?\:\/\//i, "").replace(/\/$/, "");
 
-    // add mechanism to strip out http for file and directpry name
-    // convert to string if coming from a form
-    webshot(req.query.url, req.query.url + '.jpeg', options, function(err) {
+    console.log('filename', filename);
+
+    webshot(urly, 'public/images/screenshots/' + filename + '.jpeg', options, function(err) {
         // screenshot now saved to flickr.jpeg
         console.log("webshot called");
     });
+
+    res.send(filename + '.jpeg');
 
 }
