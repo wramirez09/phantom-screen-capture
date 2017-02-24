@@ -29,12 +29,17 @@ module.exports.phantomscreencapture = function(req, res) {
 
     var filename = urly.replace(/^https?\:\/\//i, "").replace(/\/$/, "");
 
-    console.log('filename', filename);
+    /**
+     * @param {string} urly url for screen shot 
+     * @param {string}  filename screenshot name to be sent to the client
+     */
 
     webshot(urly, 'public/images/screenshots/' + filename + '.jpeg', options, function(err) {
         // screenshot now saved to flickr.jpeg
         console.log("webshot called");
     });
+
+    // send the src of the image 
 
     res.send(filename + '.jpeg');
 
