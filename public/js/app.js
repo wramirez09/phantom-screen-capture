@@ -12,6 +12,11 @@ $(function() {
     // default mobile is iphone 5 safari 
 
 
+    /**
+     * @param {string} event the on submit event 
+     
+     */
+
     $form.submit(function(event) {
         event.preventDefault();
 
@@ -28,6 +33,11 @@ $(function() {
 
     });
 
+    /**
+     * @param {string} returnedData returned data from api call - the uri for the path of the image / screenshot 
+     
+     */
+
     function successHandler(returnedData) {
         console.log('success', returnedData);
         $("#imageCont").find("img").remove();
@@ -42,6 +52,11 @@ $(function() {
 
 
     }
+
+    /**
+     * @param {string} $data input with all params from the form 
+     
+     */
 
     function submitForm($data) {
         console.log($data)
