@@ -1,7 +1,9 @@
 $(function() {
 
     var formselector = ".phantom-form",
-        $form = $(formselector);
+        $form = $(formselector),
+        $overlay = ".overlay",
+        $overlayImg = '.overlay-img'
 
 
     // sanitize the urls params 
@@ -33,6 +35,23 @@ $(function() {
 
     });
 
+
+    function showLoader($overlay, $overlayImg, hide) {
+        console.log("overlay show");
+        if (hide) {
+            $($overlay).hide();
+            $($overlayImg).hide();
+
+        } else {
+            $($overlay).show();
+            $($overlayImg).show();
+        }
+
+
+
+    }
+
+
     /**
      * @param {string} returnedData returned data from api call - the uri for the path of the image / screenshot 
      
@@ -41,10 +60,11 @@ $(function() {
     function successHandler(returnedData) {
         console.log('success', returnedData);
         $("#imageCont").find("img").remove();
-
+        showLoader($overlay, $overlayImg);
         setTimeout(function() {
             var $previewImg = $('img').hide("fast", function() {
                 var newImage = new Image();
+                showLoader($overlay, $overlayImg, 'hide');
                 newImage.src = "/images/screenshots/" + returnedData;
                 $(".card-image").append(newImage);
             });

@@ -39,6 +39,19 @@
             width: auto;
             height: auto;
         }
+        
+        .previewimage {
+            position: relative;
+            top: 10%;
+        }
+        
+        .card .card-image img {
+            height: auto !important;
+        }
+        
+        .card .card-body {
+            height: auto;
+        }
         /* well */
         
         .well,
@@ -60,17 +73,41 @@
             top: 10%;
             margin: 0 auto;
         }
+        /* overlay */
         
-        .form-group .form-control::-webkit-input-placeholder {
-            /*position: relative;
-            top: 9px;*/
-            /*left: 30px;*/
+        .overlay {
+            position: absolute;
+            z-index: 1;
+            background-color: #000;
+            opacity: .333;
+            width: 100%;
+            height: 100%;
+            display: none;
+        }
+        
+        .overlay img {
+            position: relative;
+            top: 50%;
+            left: 50%;
+        }
+        
+        ul.breadcrumb {
+            position: fixed;
+            width: 100%;
+            z-index: 1;
         }
     </style>
+
+
 </head>
 
 
 <body>
+
+    <ul class="breadcrumb">
+        <li><a href="javascript:void(0)">Designory</a></li>
+    </ul>
+
     <div class="well bs-component col-md-3">
         <form class="phantom-form" action="" method="">
 
@@ -110,7 +147,7 @@
 
         </form>
     </div>
-    <div class="col-md-8">
+    <div class="col-md-8 previewimage">
         <div class="card">
 
             <div class="card-height-indicator"></div>
@@ -127,13 +164,20 @@
                 </div>
 
                 <footer class="card-footer">
-                    <button class="btn btn-flat">Share</button>
-                    <button class="btn btn-flat btn-warning">Learn More</button>
+                    <button type="button" class="btn btn-fab btn-fab-mini">
+                  <i class="material-icons"></i>
+                </button>
+                    <!--<button class="btn btn-flat btn-warning">Share i</button>-->
                 </footer>
 
             </div>
 
         </div>
+    </div>
+
+    <div class="overlay">
+        <img src="./images/dashinfinity.gif" class="overlay-img">
+
     </div>
     <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
