@@ -6,20 +6,27 @@
     <title>phantom screen shot </title>
     <meta name="description" content="">
     <meta name="author" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="stylesheet" href="https://unpkg.com/purecss@0.6.2/build/pure-min.css" integrity="sha384-UQiGfs9ICog+LwheBSRCt1o5cbyKIHbwjWscjemyBMT9YCUMZffs6UqUTd0hObXD" crossorigin="anonymous">
+
+    <!-- Material Design fonts -->
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/icon?family=Material+Icons">
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" type="text/css" <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Material Design -->
+    <link rel="stylesheet" type="text/css" href="./css/bootstrap-material-design.min.css">
+    <link rel="stylesheet" type="text/css" href="./css/ripples.min.css">
+
+
+    <link>
 
     <!--[if lt IE 9]>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
-  <![endif]-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
+<![endif]-->
 
     <style>
-        .content {
-            padding-left: 2em;
-            padding-right: 2em;
-        }
-        
         h2 {
             text-align: center;
             color: gray;
@@ -32,82 +39,108 @@
             width: auto;
             height: auto;
         }
+        /* well */
+        
+        .well,
+        body .container-fluid .well,
+        body .container .jumbotron,
+        body .container-fluid .jumbotron,
+        .well .bs-component {
+            background-color: #fff;
+            padding: 19px;
+            margin-bottom: 20px;
+            -webkit-box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            border-radius: 2px;
+            border: 0;
+            min-height: 20px;
+            margin-left: 50px !important;
+            max-width: 80%;
+            position: relative;
+            top: 10%;
+            margin: 0 auto;
+        }
+        
+        .form-group .form-control::-webkit-input-placeholder {
+            /*position: relative;
+            top: 9px;*/
+            /*left: 30px;*/
+        }
     </style>
 </head>
 
 
 <body>
+    <div class="well bs-component col-md-3">
+        <form class="phantom-form" action="" method="">
 
-    <div class="content">
+            <!-- URL -->
+            <div class="form-group is-empty">
 
-        <div class="pure-g">
-            <div class="pure-u-1-4">
-                <h1>phantom screen shot capture</h1>
-                <form action="" method="" id="form" class="pure-form pure-form-stacked">
-                    <label class="">
-			URL
-			<input type="text" name="url">
-			</label>
-                    <br />
+                <!--<label for="inputURL" class="col-md-2 control-label">wwww.example.com</label>-->
 
-                    <label class="">
-			Width
-			<input type="text" name="width">
-			</label>
-                    <br />
-
-                    <label class="">
-			Height
-			<input type="text" name="height">
-			</label>
-                    <br />
-
-                    <label>
-				Viewports Presets
-				<select name="select" class="viewports">
-				  <option value="full-page">FullPage</option> 
-				  <option value="iphone-5">iPhone 5</option> 
-				  <option value="iphone-6">iPhone 6</option>
-				  <option value="iphone-6-plus">iPhone 6 plus</option>
-				  <option value="no-preset" selected >no-preset</option>
-
-				</select>
-			</label>
-                    <br />
-
-                    <label class="">
-			Elements to Hide
-			<input type="text" name="toHide">
-			</label>
-                    <br />
-
-                    <label class="">
-			Elements to Click
-			<input type="text" name="toClick">
-			</label>
-                    <br />
-
-                    <label class="">
-			Elements to <br /> Destroy
-			<input type="text" name="toDestroy">
-			</label>
-                    <br />
-
-                    <label class="">
-			<input type="submit" name="submit">
-			</label>
-                    <br />
-
-                </form>
+                <div class="col-md-10">
+                    <input type="url" class="form-control" id="inputURL" placeholder="URL" name="url">
+                </div>
             </div>
-            <div class="pure-u-3-4" id="imageCont">
-                <h2>preview</h2>
-                <img src="/images/site-placeholder@2x.png" class="previewImage image" id="previewImage" />
+            <br />
+            <div class="form-group is-empty">
+
+                <!--<label for="inputwidth" class="col-md-2 control-label">1400</label>-->
+
+                <div class="col-md-10">
+                    <input type="text" class="form-control" id="inputwidth" placeholder="width" name="width">
+                </div>
             </div>
+            <br />
+            <div class="form-group is-empty">
+
+                <!--<label for="inputheight" class="col-md-2 control-label">768</label>-->
+
+                <div class="col-md-10">
+                    <input type="text" class="form-control" id="inputheight" placeholder="height" name="height">
+                </div>
+            </div>
+            <!-- submit button -->
+            <div class="form-group is-empty">
+                <div class="col-md-10">
+                    <input type="submit" class="btn btn-raised btn-primary" id="inputsubmit" placeholder="submit">
+                </div>
+            </div>
+
+        </form>
+    </div>
+    <div class="col-md-8">
+        <div class="card">
+
+            <div class="card-height-indicator"></div>
+
+            <div class="card-content">
+
+                <div class="card-image">
+                    <img src="./images/site-placeholder@2x.png" alt="Loading image..." class="preview-image">
+                    <h3 class="card-image-headline">Lorem Ipsum Dolor</h3>
+                </div>
+
+                <div class="card-body">
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                </div>
+
+                <footer class="card-footer">
+                    <button class="btn btn-flat">Share</button>
+                    <button class="btn btn-flat btn-warning">Learn More</button>
+                </footer>
+
+            </div>
+
         </div>
     </div>
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
-    <script src="./js/app.js"></script>
+    <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+    <script src="/js/ripples.min.js"></script>
+    <script src="/js/material.min.js"></script>
+    <script src="/js/app.js "></script>
 </body>
 
 </html>

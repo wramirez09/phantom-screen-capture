@@ -1,6 +1,6 @@
 $(function() {
 
-    var formselector = ".pure-form",
+    var formselector = ".phantom-form",
         $form = $(formselector);
 
 
@@ -21,7 +21,7 @@ $(function() {
         event.preventDefault();
 
         var userAgentString = navigator.userAgent,
-            $inputs = $('.pure-form :input'),
+            $inputs = $('.phantom-form :input'),
             values = {};
 
         $inputs.each(function() {
@@ -43,12 +43,12 @@ $(function() {
         $("#imageCont").find("img").remove();
 
         setTimeout(function() {
-            var $previewImg = $('.previewImage').hide();
-            var newImage = new Image();
-            newImage.src = "/images/screenshots/" + returnedData;
-            $("#imageCont").append(newImage);
-
-        }, 5000);
+            var $previewImg = $('img').hide("fast", function() {
+                var newImage = new Image();
+                newImage.src = "/images/screenshots/" + returnedData;
+                $(".card-image").append(newImage);
+            });
+        }, 7000);
 
 
     }
@@ -71,4 +71,38 @@ $(function() {
         });
 
     }
+});
+
+
+
+
+var app = app || {}
+app.ui = function() {
+
+    var formgroup = ".form-group";
+    var isFocusClass = "is-focused"
+
+    var args = {
+        'isFocusedClass': "is-focused",
+        "formgroup": ".form-group"
+    }
+
+
+    function init(args) {
+        console.log("phantom app init", args, "args.isFocusedClass");
+        toggleUI(args.formgroup, args.isFocusedClass);
+    }
+    init(args);
+
+    function toggleUI(el, toggleClass) {
+        $(el).on("click", function() {
+            $(this).toggleClass(toggleClass);
+        })
+    }
+
+};
+
+
+$(document).ready(function() {
+    app.ui();
 });
