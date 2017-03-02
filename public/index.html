@@ -47,10 +47,8 @@
         
         .card .card-image img {
             height: auto !important;
-        }
-        
-        .card .card-body {
-            height: auto;
+            width: auto;
+            transform: scale(.5);
         }
         /* well */
         
@@ -123,10 +121,19 @@
             <br />
             <div class="form-group is-empty">
 
+                <!--<label for="inputURL" class="col-md-2 control-label">wwww.example.com</label>-->
+
+                <div class="col-md-10">
+                    <input type="text" class="form-control" id="inputFileName" placeholder="filename" name="filename">
+                </div>
+            </div>
+            <br />
+            <div class="form-group is-empty">
+
                 <!--<label for="inputwidth" class="col-md-2 control-label">1400</label>-->
 
                 <div class="col-md-10">
-                    <input type="text" class="form-control" id="inputwidth" placeholder="width" name="width">
+                    <input type="text" class="form-control" id="inputwidth" placeholder="crop width" name="width">
                 </div>
             </div>
             <br />
@@ -135,9 +142,25 @@
                 <!--<label for="inputheight" class="col-md-2 control-label">768</label>-->
 
                 <div class="col-md-10">
-                    <input type="text" class="form-control" id="inputheight" placeholder="height" name="height">
+                    <input type="text" class="form-control" id="inputheight" placeholder="crop height" name="height">
                 </div>
             </div>
+            <br />
+            <!--// customCSS-->
+            <div class="form-group is-empty">
+
+                <div class="col-md-10">
+                    <textarea type="textarea" class="form-control" id="inputcss" placeholder="custom css" name="css" rows="7"></textarea>
+                </div>
+            </div>
+            <br />
+            <div class="form-group is-empty">
+
+                <div class="col-md-10">
+                    <input type="text" class="form-control" id="inputcss" placeholder="file type extension" name="fileTypeExtension">
+                </div>
+            </div>
+            <br />
             <!-- submit button -->
             <div class="form-group is-empty">
                 <div class="col-md-10">

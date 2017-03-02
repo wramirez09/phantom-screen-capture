@@ -19,24 +19,73 @@ module.exports.phantomscreencapture = function(req, res) {
     var urly = req.query.url,
         userAgent = req.query.userAgent;
 
+    /**  
+    
+        @param {number} shotSize  is cropping size plugin defaults to all
+        @param {number}  screenSize is browser window size
+        @param {number}
+        
+     **/
+
     options = {
         shotSize: {
             width: req.query.width ? req.query.width : 'all',
             height: req.query.height ? req.query.height : 'all'
         },
-        userAgent: userAgent
+        screenSize: {
+            width: 1024,
+            height: 768
+        },
+        shotOffset: {
+            left: 0,
+            right: 0,
+            top: 0,
+            bottom: 0
+        },
+        userAgent: userAgent,
+        phantomConfig: {},
+        cookies: [],
+        customHeaders: null,
+        defaultWhiteBackground: false,
+        customCSS: "",
+        quality: 100,
+        streamType: "png",
+        siteType: "url",
+        renderDelay: 0,
+        timeout: 0,
+        takeShotOnCallback: false
+
     };
 
-    var filename = urly.replace(/^https?\:\/\//i, "").replace(/\/$/, "");
+    var filename;
 
-    /**
-     * @param {string} urly url for screen shot 
-     * @param {string}  filename screenshot name to be sent to the client
+    if (req.query.filename) {
+
+        filename = req.query.filename
+
+    } else {
+
+        filename = urly.replace(/^https?\:\/\//i, "").replace(/\/$/, "");
+    }
+
+    var fileTypeExtension;
+
+    if (req.query.fileTypeExtension) {
+        fileTypeExtension = req.query.fileTypeExtension;
+    } else {
+
+        fileTypeExtension = "png"
+    }
+
+
+
+    /** 
+      @param {string} urly url for screen shot 
+      @param {string}  filename screenshot name to be sent to the client
      */
-
-    webshot(urly, 'public/images/screenshots/' + filename + '.jpeg', options, function(err) {
+    webshot(urly, 'public/images/screenshots/' + filename + fileTypeExtension, options, function(err) {
         // screenshot now saved to flickr.jpeg
-        console.log("webshot called");
+        console.log("webshot called", req.query);
     });
 
     // send the src of the image 

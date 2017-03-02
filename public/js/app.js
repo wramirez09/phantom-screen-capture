@@ -1,11 +1,19 @@
 $(function() {
 
+
+});
+
+
+
+
+var app = app || {}
+app.ui = function() {
     var formselector = ".phantom-form",
         $form = $(formselector),
         $overlay = ".overlay",
         $overlayImg = '.overlay-img'
 
-
+    // TO DO's'
     // sanitize the urls params 
     // set conditionals for user choices 
     // if device picked add in userAgent string for device - look it up on devices.js
@@ -68,7 +76,9 @@ $(function() {
                 newImage.src = "/images/screenshots/" + returnedData;
                 $(".card-image").append(newImage);
             });
-        }, 7000);
+
+
+        }, 9000);
 
 
     }
@@ -91,13 +101,6 @@ $(function() {
         });
 
     }
-});
-
-
-
-
-var app = app || {}
-app.ui = function() {
 
     var formgroup = ".form-group";
     var isFocusClass = "is-focused"
@@ -109,7 +112,6 @@ app.ui = function() {
 
 
     function init(args) {
-        console.log("phantom app init", args, "args.isFocusedClass");
         toggleUI(args.formgroup, args.isFocusedClass);
     }
     init(args);
