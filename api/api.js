@@ -85,6 +85,6 @@ module.exports.phantomscreencapture = function(req, res) {
 
     // send the src of the image 
 
-    res.send(filename + fileTypeExtension);
+    res.send(finalFileName);
 
 }
