@@ -19,13 +19,6 @@ module.exports.phantomscreencapture = function(req, res) {
     var urly = req.query.url,
         userAgent = req.query.userAgent;
 
-    /**  
-    
-        @param {number} shotSize  is cropping size plugin defaults to all
-        @param {number}  screenSize is browser window size
-        @param {number}
-        
-     **/
 
     options = {
         shotSize: {
@@ -33,8 +26,8 @@ module.exports.phantomscreencapture = function(req, res) {
             height: req.query.height ? req.query.height : 'all'
         },
         screenSize: {
-            width: 1024,
-            height: 768
+            width: req.query.screenWidth,
+            height: req.query.screenHeight
         },
         shotOffset: {
             left: 0,
@@ -48,8 +41,7 @@ module.exports.phantomscreencapture = function(req, res) {
         customHeaders: null,
         defaultWhiteBackground: false,
         customCSS: "",
-        quality: 100,
-        streamType: "png",
+        quality: 75,
         siteType: "url",
         renderDelay: 0,
         timeout: 0,
@@ -62,10 +54,12 @@ module.exports.phantomscreencapture = function(req, res) {
     if (req.query.filename) {
 
         filename = req.query.filename
+        console.log(filename, "filename");
 
     } else {
 
         filename = urly.replace(/^https?\:\/\//i, "").replace(/\/$/, "");
+        console.log(filename, "filename");
     }
 
     var fileTypeExtension;
@@ -77,19 +71,20 @@ module.exports.phantomscreencapture = function(req, res) {
         fileTypeExtension = "png"
     }
 
+    var finalFileName = filename + "." + fileTypeExtension;
+    console.log("finalFileName", finalFileName);
 
+    webshot(urly, 'public/images/screenshots/' + finalFileName, options, function(err) {
+        if (err) {
+            console.log(err, "err")
+        }
 
-    /** 
-      @param {string} urly url for screen shot 
-      @param {string}  filename screenshot name to be sent to the client
-     */
-    webshot(urly, 'public/images/screenshots/' + filename + fileTypeExtension, options, function(err) {
         // screenshot now saved to flickr.jpeg
         console.log("webshot called", req.query);
     });
 
     // send the src of the image 
 
-    res.send(filename + '.jpeg');
+    res.send(filename + fileTypeExtension);
 
 }
