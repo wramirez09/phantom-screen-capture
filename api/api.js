@@ -31,18 +31,18 @@ module.exports.phantomscreencapture = function(req, res) {
             height: req.query.screenHeight
         },
         shotOffset: {
-            left: 0,
-            right: 0,
-            top: 0,
-            bottom: 0
+            left: req.query.left,
+            right: req.query.right,
+            top: req.query.top,
+            bottom: req.query.bottom
         },
         userAgent: userAgent,
         phantomConfig: {},
         cookies: [],
         customHeaders: null,
         defaultWhiteBackground: false,
-        customCSS: "",
-        quality: 75,
+        customCSS: req.query.css,
+        quality: 100,
         siteType: "url",
         renderDelay: 0,
         timeout: 0,
