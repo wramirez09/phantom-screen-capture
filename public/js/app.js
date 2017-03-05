@@ -51,8 +51,7 @@ app.ui = function() {
 
     function showLoader($overlay, $overlayImg, hide) {
         if (hide) {
-            $($overlay).hide();
-            $($overlayImg).hide();
+            $($overlay).hide();;
 
         } else {
             $($overlay).show();

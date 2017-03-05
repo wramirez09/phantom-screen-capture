@@ -52,7 +52,7 @@ module.exports.phantomscreencapture = function(req, res) {
 
     var filename;
 
-    if (req.query.filename) {
+    if (req.query.filename !== "") {
 
         filename = req.query.filename
         console.log(filename, "filename1");
@@ -81,12 +81,15 @@ module.exports.phantomscreencapture = function(req, res) {
         }
 
         // screenshot now saved to flickr.jpeg
-        console.log("webshot called", req.query);
+        console.log("webshot called");
     });
 
     // RESPONDSE
 
-    req.query.fileTypeExtension = fileTypeExtension
+    req.query.fileTypeExtension = fileTypeExtension;
+    req.query.filename = filename
+    req.query.returnObj = {};
+    req.query.returnObj.name = "will"
         // send the src of the image 
 
     res.status(200).send(req.query);
