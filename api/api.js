@@ -16,7 +16,8 @@ module.exports.postIndex = function(req, res) {
 module.exports.phantomscreencapture = function(req, res) {
     console.log("phantomscreencapture", req.query);
 
-    var urly = req.query.url,
+    var queryObj = req.query,
+        urly = req.query.url,
         userAgent = req.query.userAgent;
 
 
@@ -54,7 +55,7 @@ module.exports.phantomscreencapture = function(req, res) {
     if (req.query.filename) {
 
         filename = req.query.filename
-        console.log(filename, "filename");
+        console.log(filename, "filename1");
 
     } else {
 
@@ -83,8 +84,11 @@ module.exports.phantomscreencapture = function(req, res) {
         console.log("webshot called", req.query);
     });
 
-    // send the src of the image 
+    // RESPONDSE
 
-    res.send(finalFileName);
+    req.query.fileTypeExtension = fileTypeExtension
+        // send the src of the image 
+
+    res.status(200).send(req.query);
 
 }

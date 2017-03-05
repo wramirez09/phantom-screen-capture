@@ -9,10 +9,7 @@ app.ui = function() {
     $form.submit(function(event) {
         event.preventDefault();
 
-
-        // get userAgent String
-        var userAgentString = navigator.userAgent,
-            $inputs = $('.phantom-form :input'),
+        var $inputs = $('.phantom-form :input'),
             values = {};
 
         // add all form values to values obj
@@ -20,24 +17,39 @@ app.ui = function() {
             values[this.name] = $(this).val();
         });
 
-        var screenWidth = window.screen.width,
+        // get userAgent String
+        var userAgentString = navigator.userAgent,
+            screenWidth = window.screen.width,
             screenHeight = window.screen.height;
 
         values["screenWidth"] = screenWidth;
         values["screenHeight"] = screenHeight;
-
-        console.log('screenHeight', screenHeight, 'screenWidth', screenWidth);
-        // add userAgent string to values obj
         values['userAgent'] = userAgentString;
 
-        // get window width and height 
         submitForm(values);
 
     });
 
+    /**
+     * @param {string} $data input with all params from the form 
+     
+     */
+
+    function submitForm($data) {
+        $.ajax({
+            url: "http://localhost:3100/phantom-capture/",
+            data: $data,
+            success: function(returnedData) {
+                successHandler(returnedData)
+            }
+        }).done(function(returnedData) {
+            console.log('done', returnedData);
+        });
+
+    }
+
 
     function showLoader($overlay, $overlayImg, hide) {
-        console.log("overlay show");
         if (hide) {
             $($overlay).hide();
             $($overlayImg).hide();
@@ -48,6 +60,13 @@ app.ui = function() {
         }
     }
 
+    var cardbody = document.getElementsByClassName("card-body");
+
+    function showData(returnedData, cardbody) {
+        // append all data to card body 
+        console.log('returnedData', returnedData);
+    };
+
     /**
      * @param {string} returnedData returned data from api call - the uri for the path of the image / screenshot 
      
@@ -55,38 +74,29 @@ app.ui = function() {
 
     function successHandler(returnedData) {
         console.log('success', returnedData);
+
         $("#imageCont").find("img").remove();
+
         showLoader($overlay, $overlayImg);
+
         setTimeout(function() {
-            var $previewImg = $('img').hide("fast", function() {
-                var newImage = new Image();
-                newImage.src = "/images/screenshots/" + returnedData;
-                showLoader($overlay, $overlayImg, 'hide');
-                $(".card-image").append(newImage);
-            });
 
+            var $previewImg = $('img').remove();
 
+            var newImage = new Image();
+
+            // var url = returnedData.url.replace(/^https?\:\/\//i, "").replace(/\/$/, "");
+
+            newImage.src = "/images/screenshots/" + returnedData.filename + "." + returnedData.fileTypeExtension;
+            // hide loader
+            showLoader($overlay, $overlayImg, 'hide');
+
+            $(".card-image").append(newImage);
+
+            document.getElementById("downloadBtn").href = newImage.src;
+
+            showData(returnedData);
         }, 9000);
-
-
-    }
-
-    /**
-     * @param {string} $data input with all params from the form 
-     
-     */
-
-    function submitForm($data) {
-        console.log($data)
-        $.ajax({
-            url: "http://localhost:3100/phantom-capture/",
-            data: $data,
-            success: function(returnedData) {
-                successHandler(returnedData)
-            }
-        }).done(function() {
-            console.log('done');
-        });
 
     }
 

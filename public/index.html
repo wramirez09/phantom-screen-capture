@@ -47,8 +47,8 @@
         
         .card .card-image img {
             height: auto !important;
-            width: auto;
-            transform: scale(.5);
+            width: 100%;
+            /*transform: scale(.5);*/
         }
         /* well */
         
@@ -179,7 +179,6 @@
 
                 <div class="card-image">
                     <img src="./images/site-placeholder@2x.png" alt="Loading image..." class="preview-image">
-                    <h3 class="card-image-headline">Lorem Ipsum Dolor</h3>
                 </div>
 
                 <div class="card-body">
@@ -187,9 +186,13 @@
                 </div>
 
                 <footer class="card-footer">
-                    <button type="button" class="btn btn-fab btn-fab-mini">
-                  <i class="material-icons"></i>
-                </button>
+                    <div class="form-group is-empty">
+                        <div class="col-md-10">
+                            <a class="btn btn-raised btn-primary" id="downloadBtn" href="/images/site-placeholder@2x.png" download>Download</a>
+
+                        </div>
+                    </div>
+                    </button>
                     <!--<button class="btn btn-flat btn-warning">Share i</button>-->
                 </footer>
 
