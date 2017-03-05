@@ -51,11 +51,14 @@ app.ui = function() {
 
     function showLoader($overlay, $overlayImg, hide) {
         if (hide) {
-            $($overlay).hide();;
+            $($overlay).hide();
 
         } else {
+
+
             $($overlay).show();
             $($overlayImg).show();
+            $(window).scrollTop(0);
         }
     }
 
@@ -80,7 +83,7 @@ app.ui = function() {
 
         setTimeout(function() {
 
-            var $previewImg = $('img').remove();
+            var $previewImg = $('.card-image img').remove();
 
             var newImage = new Image();
 

@@ -88,8 +88,6 @@ module.exports.phantomscreencapture = function(req, res) {
 
     req.query.fileTypeExtension = fileTypeExtension;
     req.query.filename = filename
-    req.query.returnObj = {};
-    req.query.returnObj.name = "will"
         // send the src of the image 
 
     res.status(200).send(req.query);
