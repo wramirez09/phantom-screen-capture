@@ -3,6 +3,13 @@
 
 simple api using webshot to take screenshots via a web based front end. 
 
+## installation 
+- Download
+- npm install 
+- run node server.js in the terminal from project directory
+- go in a browser go to localhost:3100. This port is set by default
+- fill out form in browser and than hit submit 
+
 <img width="1362" alt="screen shot 2017-03-05 at 10 26 44 am" src="https://cloud.githubusercontent.com/assets/1247194/23589238/04d194b2-018f-11e7-9b44-7f57b0faf463.png">
 
 
