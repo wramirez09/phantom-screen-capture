@@ -6,29 +6,61 @@ app.ui = function() {
         $overlay = ".overlay",
         $overlayImg = '.overlay-img'
 
-    $form.submit(function(event) {
-        event.preventDefault();
+    var formgroup = ".form-group";
+    var isFocusClass = "is-focused"
 
-        var $inputs = $('.phantom-form :input'),
+    var args = {
+        'isFocusedClass': "is-focused",
+        "formgroup": ".form-group",
+        "phantomforminput": ".phantom-form :input'"
+    }
+
+
+    /**
+     * 
+     * @param {object} args all selectors needed stored value strings
+     */
+
+    function init(args) {
+
+        toggleUI(args.formgroup, args.isFocusedClass, args);
+
+        $form.submit(function(event) {
+            event.preventDefault();
+
+            var $inputs = $('.phantom-form :input');
+            console.log(args.phantomforminput);
             values = {};
 
-        // add all form values to values obj
-        $inputs.each(function() {
-            values[this.name] = $(this).val();
+            // add all form values to values obj
+            $inputs.each(function() {
+                values[this.name] = $(this).val();
+            });
+
+            // get userAgent String
+            var userAgentString = navigator.userAgent,
+                screenWidth = window.screen.width,
+                screenHeight = window.screen.height;
+
+            values["screenWidth"] = screenWidth;
+            values["screenHeight"] = screenHeight;
+            values['userAgent'] = userAgentString;
+
+            submitForm(values);
+
         });
+    }
 
-        // get userAgent String
-        var userAgentString = navigator.userAgent,
-            screenWidth = window.screen.width,
-            screenHeight = window.screen.height;
+    /**
+     * call init function 
+     */
+    init(args);
 
-        values["screenWidth"] = screenWidth;
-        values["screenHeight"] = screenHeight;
-        values['userAgent'] = userAgentString;
-
-        submitForm(values);
-
-    });
+    function toggleUI(el, toggleClass, args) {
+        $(el).on("click", function() {
+            $(this).toggleClass(toggleClass);
+        });
+    }
 
     /**
      * @param {string} $data input with all params from the form 
@@ -52,10 +84,7 @@ app.ui = function() {
     function showLoader($overlay, $overlayImg, hide) {
         if (hide) {
             $($overlay).hide();
-
         } else {
-
-
             $($overlay).show();
             $($overlayImg).show();
             $(window).scrollTop(0);
@@ -102,25 +131,25 @@ app.ui = function() {
 
     }
 
-    var formgroup = ".form-group";
-    var isFocusClass = "is-focused"
+    // var formgroup = ".form-group";
+    // var isFocusClass = "is-focused"
 
-    var args = {
-        'isFocusedClass': "is-focused",
-        "formgroup": ".form-group"
-    }
+    // var args = {
+    //     'isFocusedClass': "is-focused",
+    //     "formgroup": ".form-group"
+    // }
 
 
-    function init(args) {
-        toggleUI(args.formgroup, args.isFocusedClass);
-    }
-    init(args);
+    // function init(args) {
+    //     toggleUI(args.formgroup, args.isFocusedClass);
+    // }
+    // init(args);
 
-    function toggleUI(el, toggleClass) {
-        $(el).on("click", function() {
-            $(this).toggleClass(toggleClass);
-        })
-    }
+    // function toggleUI(el, toggleClass) {
+    //     $(el).on("click", function() {
+    //         $(this).toggleClass(toggleClass);
+    //     })
+    // }
 
 };
 

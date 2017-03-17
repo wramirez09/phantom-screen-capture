@@ -44,7 +44,7 @@ module.exports.phantomscreencapture = function(req, res) {
         customCSS: req.query.css,
         quality: 100,
         siteType: "url",
-        renderDelay: 0,
+        renderDelay: 1,
         timeout: 0,
         takeShotOnCallback: false
 
