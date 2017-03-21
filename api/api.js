@@ -37,7 +37,7 @@ module.exports.phantomscreencapture = function(req, res) {
             bottom: req.query.bottom
         },
         userAgent: userAgent,
-        phantomConfig: {},
+        phantomConfig: { 'ignore-ssl-errors': 'true' },
         cookies: [],
         customHeaders: null,
         defaultWhiteBackground: false,
@@ -74,22 +74,17 @@ module.exports.phantomscreencapture = function(req, res) {
 
     var finalFileName = filename + "." + fileTypeExtension;
     console.log("finalFileName", finalFileName);
+    req.query.fileTypeExtension = fileTypeExtension;
+    req.query.filename = filename
 
-    webshot(urly, 'public/images/screenshots/' + finalFileName, options, function(err) {
+    webshot(urly, 'public/screenshots/' + finalFileName, options, function(err) {
         if (err) {
             console.log(err, "err")
         }
 
-        // screenshot now saved to flickr.jpeg
         console.log("webshot called");
+        // send the req obj back
+        res.status(200).send(req.query);
     });
-
-    // RESPONDSE
-
-    req.query.fileTypeExtension = fileTypeExtension;
-    req.query.filename = filename
-        // send the src of the image 
-
-    res.status(200).send(req.query);
 
 }

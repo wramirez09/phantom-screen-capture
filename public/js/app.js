@@ -12,14 +12,8 @@ app.ui = function() {
     var args = {
         'isFocusedClass': "is-focused",
         "formgroup": ".form-group",
-        "phantomforminput": ".phantom-form :input'"
+        "phantomforminput": ".phantom-form :input"
     }
-
-
-    /**
-     * 
-     * @param {object} args all selectors needed stored value strings
-     */
 
     function init(args) {
 
@@ -27,9 +21,8 @@ app.ui = function() {
 
         $form.submit(function(event) {
             event.preventDefault();
-
-            var $inputs = $('.phantom-form :input');
-            console.log(args.phantomforminput);
+            showLoader($overlay, $overlayImg);
+            var $inputs = $(args.phantomforminput);
             values = {};
 
             // add all form values to values obj
@@ -46,6 +39,8 @@ app.ui = function() {
             values["screenHeight"] = screenHeight;
             values['userAgent'] = userAgentString;
 
+
+            console.log("values", values)
             submitForm(values);
 
         });
@@ -75,7 +70,7 @@ app.ui = function() {
                 successHandler(returnedData)
             }
         }).done(function(returnedData) {
-            console.log('done', returnedData);
+            console.log('done');
         });
 
     }
@@ -94,9 +89,18 @@ app.ui = function() {
     var cardbody = document.getElementsByClassName("card-body");
 
     function showData(returnedData, cardbody) {
-        // append all data to card body 
+
         console.log('returnedData', returnedData);
-    };
+
+        var result = "";
+
+        for (var key in returnedData) {
+            result += "<b >" + key + "</b> " + returnedData[key] + "<br />";
+        }
+
+        $(".data").empty();
+        $(".data").append(result)
+    }
 
     /**
      * @param {string} returnedData returned data from api call - the uri for the path of the image / screenshot 
@@ -108,18 +112,14 @@ app.ui = function() {
 
         $("#imageCont").find("img").remove();
 
-        showLoader($overlay, $overlayImg);
-
         setTimeout(function() {
 
             var $previewImg = $('.card-image img').remove();
 
             var newImage = new Image();
 
-            // var url = returnedData.url.replace(/^https?\:\/\//i, "").replace(/\/$/, "");
-
             newImage.src = "/images/screenshots/" + returnedData.filename + "." + returnedData.fileTypeExtension;
-            // hide loader
+
             showLoader($overlay, $overlayImg, 'hide');
 
             $(".card-image").append(newImage);
@@ -127,30 +127,8 @@ app.ui = function() {
             document.getElementById("downloadBtn").href = newImage.src;
 
             showData(returnedData);
-        }, 9000);
-
+        }, 1000);
     }
-
-    // var formgroup = ".form-group";
-    // var isFocusClass = "is-focused"
-
-    // var args = {
-    //     'isFocusedClass': "is-focused",
-    //     "formgroup": ".form-group"
-    // }
-
-
-    // function init(args) {
-    //     toggleUI(args.formgroup, args.isFocusedClass);
-    // }
-    // init(args);
-
-    // function toggleUI(el, toggleClass) {
-    //     $(el).on("click", function() {
-    //         $(this).toggleClass(toggleClass);
-    //     })
-    // }
-
 };
 
 
