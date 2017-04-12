@@ -77,7 +77,7 @@ module.exports.phantomscreencapture = function(req, res) {
     req.query.fileTypeExtension = fileTypeExtension;
     req.query.filename = filename
 
-    webshot(urly, 'public/screenshots/' + finalFileName, options, function(err) {
+    webshot(urly, 'screenshots/' + finalFileName, options, function(err) {
         if (err) {
             console.log(err, "err")
         }

@@ -16,10 +16,22 @@
             top: 10%;
         }
         
+        .card {
+            height: 100%;
+        }
+        
+        .card .card-image {
+            /*height: 100% !important;*/
+            position: relative;
+            top: 0;
+        }
+        
         .card .card-image img {
             height: auto !important;
             width: 100%;
-            /*transform: scale(.5);*/
+            /*transform: scale(.533);*/
+            position: relative;
+            top: 0;
         }
         /* well */
         
@@ -64,4 +76,8 @@
             position: fixed;
             width: 100%;
             z-index: 1;
+        }
+        
+        .btn {
+            float: right;
         }

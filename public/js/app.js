@@ -118,7 +118,7 @@ app.ui = function() {
 
             var newImage = new Image();
 
-            newImage.src = "/images/screenshots/" + returnedData.filename + "." + returnedData.fileTypeExtension;
+            newImage.src = "/screenshots/" + returnedData.filename + "." + returnedData.fileTypeExtension;
 
             showLoader($overlay, $overlayImg, 'hide');
 
