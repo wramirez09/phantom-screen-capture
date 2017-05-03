@@ -14,7 +14,7 @@ module.exports.postIndex = function(req, res) {
 }
 
 module.exports.phantomscreencapture = function(req, res) {
-    console.log("phantomscreencapture", req.query);
+
 
     var queryObj = req.query,
         urly = req.query.url,
@@ -42,7 +42,7 @@ module.exports.phantomscreencapture = function(req, res) {
         customHeaders: null,
         defaultWhiteBackground: false,
         customCSS: req.query.css,
-        quality: 100,
+        quality: 75,
         siteType: "url",
         renderDelay: 1,
         timeout: 0,
@@ -55,17 +55,17 @@ module.exports.phantomscreencapture = function(req, res) {
     if (req.query.filename !== "") {
 
         filename = req.query.filename
-        console.log(filename, "filename1");
+
 
     } else {
 
         filename = urly.replace(/^https?\:\/\//i, "").replace(/\/$/, "");
-        console.log(filename, "filename");
     }
 
     var fileTypeExtension;
 
     if (req.query.fileTypeExtension) {
+
         fileTypeExtension = req.query.fileTypeExtension;
     } else {
 
@@ -73,16 +73,16 @@ module.exports.phantomscreencapture = function(req, res) {
     }
 
     var finalFileName = filename + "." + fileTypeExtension;
-    console.log("finalFileName", finalFileName);
+
     req.query.fileTypeExtension = fileTypeExtension;
     req.query.filename = filename
 
-    webshot(urly, 'screenshots/' + finalFileName, options, function(err) {
+    webshot(urly, 'public/screenshots/' + finalFileName, options, function(err) {
         if (err) {
             console.log(err, "err")
         }
 
-        console.log("webshot called");
+        console.log("webshot called", req.query);
         // send the req obj back
         res.status(200).send(req.query);
     });

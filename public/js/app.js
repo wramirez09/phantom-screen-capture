@@ -17,15 +17,15 @@ app.ui = function() {
 
     function init(args) {
 
+        // turn on ui 
         toggleUI(args.formgroup, args.isFocusedClass, args);
 
+        // handle form submission 
         $form.submit(function(event) {
             event.preventDefault();
             showLoader($overlay, $overlayImg);
             var $inputs = $(args.phantomforminput);
             values = {};
-
-            // add all form values to values obj
             $inputs.each(function() {
                 values[this.name] = $(this).val();
             });
@@ -38,17 +38,11 @@ app.ui = function() {
             values["screenWidth"] = screenWidth;
             values["screenHeight"] = screenHeight;
             values['userAgent'] = userAgentString;
-
-
-            console.log("values", values)
             submitForm(values);
 
         });
     }
 
-    /**
-     * call init function 
-     */
     init(args);
 
     function toggleUI(el, toggleClass, args) {
@@ -56,11 +50,6 @@ app.ui = function() {
             $(this).toggleClass(toggleClass);
         });
     }
-
-    /**
-     * @param {string} $data input with all params from the form 
-     
-     */
 
     function submitForm($data) {
         $.ajax({
@@ -86,9 +75,7 @@ app.ui = function() {
         }
     }
 
-    var cardbody = document.getElementsByClassName("card-body");
-
-    function showData(returnedData, cardbody) {
+    function showData(returnedData) {
 
         console.log('returnedData', returnedData);
 
