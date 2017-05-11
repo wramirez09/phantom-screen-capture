@@ -12,7 +12,8 @@ app.ui = function() {
     var args = {
         'isFocusedClass': "is-focused",
         "formgroup": ".form-group",
-        "phantomforminput": ".phantom-form :input"
+        "phantomforminput": ".phantom-form :input",
+        "isMobile": false
     }
 
     function init(args) {
@@ -31,18 +32,33 @@ app.ui = function() {
             });
 
             // get userAgent String
-            var userAgentString = navigator.userAgent,
-                screenWidth = window.screen.width,
-                screenHeight = window.screen.height;
+            if (args.isMobile) {
+                userAgentString = 'Mozilla/5.0 (Linux; <Android Version>; <Build Tag etc.>) AppleWebKit/<WebKit Rev> (KHTML, like Gecko) Chrome/<Chrome Rev> Mobile Safari/<WebKit Rev>';
+                screenWidth = 320;
+                screenHeight = 568;
+            } else {
+                var userAgentString = navigator.userAgent,
+                    screenWidth = window.screen.width,
+                    screenHeight = window.screen.height;
+                values['userAgent'] = userAgentString;
+
+            }
 
             values["screenWidth"] = screenWidth;
             values["screenHeight"] = screenHeight;
-            values['userAgent'] = userAgentString;
+
+
             submitForm(values);
 
         });
     }
 
+    $("#isMobile").on("change", function() {
+        if ($(this).is(":checked")) {
+            args.isMobile = true;
+            console.log("ismobile value set", args.isMobile)
+        }
+    })
     init(args);
 
     function toggleUI(el, toggleClass, args) {
@@ -61,6 +77,12 @@ app.ui = function() {
         }).done(function(returnedData) {
             console.log('done');
         });
+
+    }
+
+
+    function IsMobile() {
+
 
     }
 
