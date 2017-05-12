@@ -17,10 +17,8 @@ app.ui = function() {
     }
 
     function init(args) {
-
         // turn on ui 
         toggleUI(args.formgroup, args.isFocusedClass, args);
-
         // handle form submission 
         $form.submit(function(event) {
             event.preventDefault();
@@ -30,8 +28,6 @@ app.ui = function() {
             $inputs.each(function() {
                 values[this.name] = $(this).val();
             });
-
-            // get userAgent String
             if (args.isMobile) {
                 userAgentString = 'Mozilla/5.0 (Linux; <Android Version>; <Build Tag etc.>) AppleWebKit/<WebKit Rev> (KHTML, like Gecko) Chrome/<Chrome Rev> Mobile Safari/<WebKit Rev>';
                 screenWidth = 320;
@@ -40,17 +36,11 @@ app.ui = function() {
                 var userAgentString = navigator.userAgent,
                     screenWidth = window.screen.width,
                     screenHeight = window.screen.height;
-
-                values['userAgent'] = userAgentString;
-                values["screenWidth"] = screenWidth;
-                values["screenHeight"] = screenHeight;
-
             }
-
-
-
+            values['userAgent'] = userAgentString;
+            values["screenWidth"] = screenWidth;
+            values["screenHeight"] = screenHeight;
             submitForm(values);
-
         });
     }
 
@@ -92,11 +82,8 @@ app.ui = function() {
     }
 
     function showData(returnedData) {
-
         console.log('returnedData', returnedData);
-
         var result = "";
-
         for (var key in returnedData) {
             result += "<b >" + key + "</b> " + returnedData[key] + "<br />";
         }
@@ -107,23 +94,15 @@ app.ui = function() {
 
     function successHandler(returnedData) {
         console.log('success', returnedData);
-
         $("#imageCont").find("img").remove();
 
         setTimeout(function() {
-
             var $previewImg = $('.card-image img').remove();
-
             var newImage = new Image();
-
             newImage.src = "/screenshots/" + returnedData.filename + "." + returnedData.fileTypeExtension;
-
             showLoader($overlay, $overlayImg, 'hide');
-
             $(".card-image").append(newImage);
-
             document.getElementById("downloadBtn").href = newImage.src;
-
             showData(returnedData);
         }, 1000);
     }
