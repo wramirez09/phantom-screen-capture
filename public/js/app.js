@@ -40,12 +40,13 @@ app.ui = function() {
                 var userAgentString = navigator.userAgent,
                     screenWidth = window.screen.width,
                     screenHeight = window.screen.height;
+
                 values['userAgent'] = userAgentString;
+                values["screenWidth"] = screenWidth;
+                values["screenHeight"] = screenHeight;
 
             }
 
-            values["screenWidth"] = screenWidth;
-            values["screenHeight"] = screenHeight;
 
 
             submitForm(values);
@@ -80,13 +81,6 @@ app.ui = function() {
 
     }
 
-
-    function IsMobile() {
-
-
-    }
-
-
     function showLoader($overlay, $overlayImg, hide) {
         if (hide) {
             $($overlay).hide();
@@ -110,11 +104,6 @@ app.ui = function() {
         $(".data").empty();
         $(".data").append(result)
     }
-
-    /**
-     * @param {string} returnedData returned data from api call - the uri for the path of the image / screenshot 
-     
-     */
 
     function successHandler(returnedData) {
         console.log('success', returnedData);
