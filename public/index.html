@@ -7,18 +7,11 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-
-    <!-- Material Design fonts -->
-    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700">
-    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/icon?family=Material+Icons">
-
     <!-- Bootstrap -->
-    <link rel="stylesheet" type="text/css" <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <!-- main.scss-->
+    <link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css">
 
-    <!-- Bootstrap Material Design -->
-    <link rel="stylesheet" type="text/css" href="./css/bootstrap-material-design.min.css">
-    <link rel="stylesheet" type="text/css" href="./css/ripples.min.css">
-    <link rel="stylesheet" type="text/css" href="./css/app.css">
+    <link rel="stylesheet" type="text/css" href="./css/main.css">
 
 
     <link>
@@ -29,142 +22,181 @@
 </head>
 
 
-<body>
+<body class="cbp-spmenu-push">
 
-    <ul class="breadcrumb">
+    <!-- slide out menu plugin -->
+    <nav class="data cbp-spmenu cbp-spmenu-vertical cbp-spmenu-right" id="cbp-spmenu-s2">
+        <h3>Data</h3>
+
+    </nav>
+    <nav class="cbp-spmenu cbp-spmenu-horizontal cbp-spmenu-bottom" id="cbp-spmenu-s4">
+        <h3>Menu</h3>
+        <a href="#">Celery seakale</a>
+        <a href="#">Dulse daikon</a>
+        <a href="#">Zucchini garlic</a>
+        <a href="#">Catsear azuki bean</a>
+        <a href="#">Dandelion bunya</a>
+        <a href="#">Rutabaga</a>
+        <a href="#">Celery seakale</a>
+        <a href="#">Dulse daikon</a>
+        <a href="#">Zucchini garlic</a>
+        <a href="#">Catsear azuki bean</a>
+        <a href="#">Dandelion bunya</a>
+        <a href="#">Rutabaga</a>
+    </nav>
+
+    <ul class="breadcrumb" id="showRight">
         <li><a href="javascript:void(0)">Designory</a></li>
+        <!-- Class "cbp-spmenu-open" gets applied to menu -->
     </ul>
+    <section class="cotainer">
+        <form class="phantom-form col-md-4 col-sm-12" action="" method="">
+            <h1>Fuzzy Screenshots </h1>
+            <h3 class="col-md-12">Configuration</h3>
+            <div class="col-md-12">
+                <label for="isMultiple">make multiple screenshots &nbsp;</label>
+                <input type="checkbox" id="isMultiple" placeholder="isMultiple" name="url">
+            </div>
+            <div class="col-md-12 multipleurls">
+                <textarea type="url" class="form-control" id="" placeholder="URL" name="multiurl" rows="5" cols="1"></textarea>
+            </div>
+            <div class="col-md-12">
+                <label for="isSingle">make single screenshots &nbsp;</label>
+                <input type="checkbox" id="isSingle" placeholder="isSingle" name="isSingle">
 
-    <div class="well bs-component col-md-3">
-        <form class="phantom-form" action="" method="">
+            </div>
+            <div class="col-md-12 singleinput">
+                <input type="url" class="form-control" id="" placeholder="URL" name="singleurl" rows="5" cols="2">
+            </div>
+            <div class="col-md-12">
+                <label for="crawlerActivation">unleash the creepy crawler</label>
+                <input type="checkbox" id="cawler" placeholder="cawler" name="crawlerActivation">
+            </div>
+            <div class="col-md-12">
+                <label for="ismobile">make it mobile screen shot&nbsp;</label>
+                <input type="checkbox" id="isMobile" placeholder="ismobile" name="ismobile">
+            </div>
+            <div class="col-md-12">
+                <input type="text" class="form-control" id="inputFileName" placeholder="filename" name="filename">
+            </div>
+            <!-- cookies -->
+            <h3 class="col-md-12">Cookies</h3>
+            <p>first cookie</p>
+            <div class="col-md-12">
+                <input type="text" name="cookie1Name" class="" placeholder="cookie-1 name">
+            </div>
+            <div class="col-md-12">
+                <input type="text" name="cookie1Value" class="" placeholder="cookie-1 value">
+            </div>
 
-            <!-- URL -->
-            <div class="form-group is-empty">
+            <div class="col-md-12">
+                <input type="text" name="cookie1Path" class="" placeholder="cookie-1 path">
+            </div>
 
-                <h3>Basic</h3>
+            <div class="col-md-12">
+                <input type="text" name="cookie1Domain" class="" placeholder="cookie-1 domain">
+            </div>
+            <p>second cookie</p>
+            <div class="col-md-12">
+                <input type="text" name="cookie2Name" class="" placeholder="cookie-2 name">
+            </div>
+            <div class="col-md-12">
+                <input type="text" name="cookie2Value" class="" placeholder="cookie-2 value">
+            </div>
 
-                <div class="col-md-10">
-                    <input type="url" class="form-control" id="inputURL" placeholder="URL" name="url">
-                </div>
+            <div class="col-md-12">
+                <input type="text" name="cookie2Path" class="" placeholder="cookie-2 path">
+            </div>
+
+            <div class="col-md-12">
+                <input type="text" name="cookie2Domain" class="" placeholder="cookie-2 domain">
+            </div>
+
+
+
+
+
+            <h3 class="col-md-12">Screen size</h3>
+            <div class="col-md-12">
+                <input type="text" class="form-control" id="inputwidth" placeholder="screen width" name="width">
+            </div>
+            <div class="col-md-12">
+                <input type="text" class="form-control" id="inputheight" placeholder="screen height" name="height">
+            </div>
+
+            <h3 class="col-md-12">Shoot offset</h3>
+            <div class="col-md-12">
+                <input type="text" class="form-control" id="top" placeholder="top" name="top">
+            </div>
+            <div class="col-md-12">
+                <input type="text" class="form-control" id="bottom" placeholder="bottom" name="bottom">
+            </div>
+            <div class="col-md-12">
+                <input type="text" class="form-control" id="left" placeholder="left" name="left">
+            </div>
+            <div class="col-md-12">
+                <input type="text" class="form-control" id="right" placeholder="right" name="right">
+            </div>
+            <div class="col-md-12">
+                <textarea type="textarea" class="form-control" id="inputcss" placeholder="custom css" name="css" rows="7"></textarea>
+            </div>
+            <div class="col-md-12">
+                <h3 class="col-md-12">File Type</h3>
+                <input type="text" class="form-control" id="inputcss" placeholder="file type extension (png, jpeg, pdf)" name="fileTypeExtension">
             </div>
             <br />
-            <div class="form-group is-empty">
-                <div class="col-md-10">
-                    <input type="text" class="form-control" id="inputFileName" placeholder="filename" name="filename">
-                </div>
+            <div class="col-md-12">
+                <input type="submit" class="btn btn-lg btn-primary" id="inputsubmit" placeholder="submit">
             </div>
-            <br />
-            <div class="form-group is-empty">
-                <div class="col-md-10">
-                    <label for="ismobile">make it mobile screen shot</label>
-                    <input type="checkbox" class="form-control" id="isMobile" placeholder="ismobile" name="ismobile">
-
-                </div>
-            </div>
-            <br />
-            <div class="form-group is-empty">
-
-                <h3>Cropping</h3>
-
-                <div class="col-md-10">
-                    <input type="text" class="form-control" id="inputwidth" placeholder="crop width" name="width">
-                </div>
-            </div>
-            <br />
-            <div class="form-group is-empty">
-
-                <!--<label for="inputheight" class="col-md-2 control-label">768</label>-->
-
-                <div class="col-md-10">
-                    <input type="text" class="form-control" id="inputheight" placeholder="crop height" name="height">
-                </div>
-            </div>
-
-            <br />
-            <div class="form-group is-empty">
-                <h3>shoot offset</h3>
-                <div class="col-md-10">
-                    <input type="text" class="form-control" id="top" placeholder="top" name="top">
-                </div>
-                <div class="col-md-10">
-                    <input type="text" class="form-control" id="bottom" placeholder="bottom" name="bottom">
-                </div>
-                <div class="col-md-10">
-                    <input type="text" class="form-control" id="left" placeholder="left" name="left">
-                </div>
-                <div class="col-md-10">
-                    <input type="text" class="form-control" id="right" placeholder="right" name="right">
-                </div>
-            </div>
-            <!--// customCSS-->
-            <div class="form-group is-empty">
-                <h3>custom styling</h3>
-                <div class="col-md-10">
-                    <textarea type="textarea" class="form-control" id="inputcss" placeholder="custom css" name="css" rows="7"></textarea>
-                </div>
-            </div>
-            <br />
-            <div class="form-group is-empty">
-
-                <div class="col-md-10">
-                    <h3>File Type</h3>
-                    <input type="text" class="form-control" id="inputcss" placeholder="file type extension (png, jpeg, pdf)" name="fileTypeExtension">
-                </div>
-            </div>
-            <br />
-            <!-- submit button -->
-            <div class="form-group is-empty">
-                <div class="col-md-10">
-                    <input type="submit" class="btn btn-raised btn-primary" id="inputsubmit" placeholder="submit">
-                </div>
-            </div>
-
         </form>
-    </div>
-    <div class="col-md-8 previewimage">
-        <div class="card">
-
-            <div class="card-height-indicator"></div>
-
-            <div class="card-content">
-
-                <div class="card-image">
-                    <img src="./images/site-placeholder@2x.png" alt="Loading image..." class="preview-image">
-                </div>
-
-                <div class="card-body">
-
-                    <div class="data">
-                    </div>
-
-                </div>
-
-                <footer class="card-footer">
-                    <div class="form-group is-empty">
-                        <div class="col-md-10">
-                            <a class="btn btn-raised btn-primary" id="downloadBtn" href="/images/site-placeholder@2x.png" download>Download</a>
-
-                        </div>
-                    </div>
-                    </button>
-                    <!--<button class="btn btn-flat btn-warning">Share i</button>-->
-                </footer>
-
-            </div>
-
+    </section>
+    <!-- card -->
+    <div class="col-md-8 col-sm-12 previewimage">
+        <div class="jumbotron margin-top-100" id="imgCont">
+            <img src="./images/site-placeholder@2x.png" alt="Loading image..." class="preview-image thumbnail center-block">
         </div>
+
+        <a class="btn btn-primary btn-lg" id="downloadBtn" href="/images/site-placeholder@2x.png " download>Download</a>
+
+        <br />
+
+        <!--<div class="panel panel-default">
+            <div class=""></div>
+        </div>-->
     </div>
 
-    <div class="overlay">
-        <img src="./images/dashinfinity.gif" class="overlay-img">
+    <div class="overlay ">
+        <img src="./images/dashinfinity.gif " class="overlay-img ">
 
     </div>
-    <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-
-    <script src="/js/ripples.min.js"></script>
-    <script src="/js/material.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.10.2.min.js "></script>
+    <script src="/js/bootstrap.min.js "></script>
+    <script src="/js/classie.js "></script>
     <script src="/js/app.js "></script>
+    <script>
+        (function() {
+
+            var menuRight = document.getElementById('cbp-spmenu-s2'),
+                menuBottom = document.getElementById('cbp-spmenu-s4'),
+                showRight = document.getElementById('showRight'),
+                showBottom = document.getElementById('showBottom'),
+
+                body = document.body;
+
+
+            showRight.onclick = function() {
+                classie.toggle(this, 'active');
+                classie.toggle(menuRight, 'cbp-spmenu-open');
+                disableOther('showRight');
+            };
+
+            function disableOther(button) {
+                if (button !== 'showRight') {
+                    classie.toggle(showRight, 'disabled');
+                }
+            }
+        })($);
+    </script>
 </body>
 
 </html>
