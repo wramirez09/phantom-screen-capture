@@ -8,23 +8,23 @@
             top: 10%;
         }
         
-        .card {
-            height: 100%;
-            .image,
-            img {
-                position: relative;
-                display: block;
-                width: auto;
-                height: auto;
-            }
+        .card .card-body {
+            height: auto;
+            width: auto;
+            position: fixed;
+            background-color: rgba(255, 255, 255, .25);
+            top: 150px;
         }
         
-        .card .card-image img {
-            height: auto !important;
-            width: 100%;
-            /*transform: scale(.533);*/
-            position: relative;
-            top: 0;
+        .card .card-image {
+            height: auto;
+        }
+        
+        .card .card-image>img {
+            width: auto !important;
+            height: initial!important;
+            display: block!important;
+            margin: 0 auto!important;
         }
         /* well */
         

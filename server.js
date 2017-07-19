@@ -19,6 +19,6 @@ app.all("/", api.postIndex.bind(this));
 
 
 
-app.listen(9000, function(req, res) {
-    console.log('app listening on port 9000!')
+app.listen(3100, function(req, res) {
+    console.log('app listening on port 3100!')
 });

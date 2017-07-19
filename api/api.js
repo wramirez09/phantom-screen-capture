@@ -1,7 +1,6 @@
 var express = require('express')
 var app = express();
-var singleshot = require('./singleshot');
-var multishot = require('./multishot');
+var webshot = require('webshot');
 
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
@@ -16,13 +15,76 @@ module.exports.postIndex = function(req, res) {
 
 module.exports.phantomscreencapture = function(req, res) {
 
-    if (req.query.multipleshot == 'false') {
 
-        singleshot.singleshot(req, res);
+    var queryObj = req.query,
+        urly = req.query.url,
+        userAgent = req.query.userAgent;
 
-    } else if (req.query.multipleshot == 'true') {
 
-        multishot.multishot(req, res);
+    options = {
+        shotSize: {
+            width: req.query.width ? req.query.width : 'all',
+            height: req.query.height ? req.query.height : 'all'
+        },
+        screenSize: {
+            width: req.query.screenWidth,
+            height: req.query.screenHeight
+        },
+        shotOffset: {
+            left: req.query.left,
+            right: req.query.right,
+            top: req.query.top,
+            bottom: req.query.bottom
+        },
+        userAgent: userAgent,
+        phantomConfig: { 'ignore-ssl-errors': 'true' },
+        cookies: [],
+        customHeaders: null,
+        defaultWhiteBackground: false,
+        customCSS: req.query.css,
+        quality: 75,
+        siteType: "url",
+        renderDelay: 1,
+        timeout: 0,
+        takeShotOnCallback: false
 
+    };
+
+    var filename;
+
+    if (req.query.filename !== "") {
+
+        filename = req.query.filename
+
+
+    } else {
+
+        filename = urly.replace(/^https?\:\/\//i, "").replace(/\/$/, "");
     }
+
+    var fileTypeExtension;
+
+    if (req.query.fileTypeExtension) {
+
+        fileTypeExtension = req.query.fileTypeExtension;
+    } else {
+
+        fileTypeExtension = "png"
+    }
+
+    var finalFileName = filename + "." + fileTypeExtension;
+
+    req.query.fileTypeExtension = fileTypeExtension;
+    req.query.filename = filename
+
+    webshot(urly, 'public/screenshots/' + finalFileName, options, function(err) {
+        if (err) {
+            console.log(err, "err")
+        }
+
+        console.log("webshot called", req.query);
+        // send the req obj back
+        res.status(200).send(req.query);
+    });
+
 }
