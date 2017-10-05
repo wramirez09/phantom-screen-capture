@@ -126,7 +126,7 @@ app.ui = function() {
 
     function submitForm($data) {
         $.ajax({
-            url: "http://ec2-13-58-89-52.us-east-2.compute.amazonaws.com:3069/phantom-capture/",
+            url: "http://ec2-13-59-85-218.us-east-2.compute.amazonaws.com:3069/phantom-capture//phantom-capture/",
             data: $data,
             success: function(returnedData) {
                 successHandler(returnedData)

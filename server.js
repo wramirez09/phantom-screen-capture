@@ -4,11 +4,6 @@ var api = require('./api/api');
 
 app.use(express.static('public'));
 
-/**
- * @param {end point} the endooint that process the screen shot
- 
- */
-
 app.all("/phantom-capture/", api.phantomscreencapture.bind(this));
 
 /**
