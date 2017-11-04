@@ -94,7 +94,7 @@ module.exports.singleshot = function(req, res) {
 
     } else {
 
-        webshot(urly, 'public/screenshots/' + finalFileName, options, function(err) {
+        webshot(urly, './public/screenshots/' + finalFileName, options, function(err) {
             if (err) {
                 console.log(err, "err")
             }
