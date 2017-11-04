@@ -93,12 +93,14 @@ module.exports.singleshot = function(req, res) {
         crawler.crawl(req, res);
 
     } else {
+        var imagepath = './public/screenshots/' + finalFileName;
 
-        webshot(urly, './public/screenshots/' + finalFileName, options, function(err) {
+        console.log("imagepath", imagepath);
+
+        webshot(urly, imagepath, options, function(err) {
             if (err) {
                 console.log(err, "err")
             }
-
             console.log("webshot called", req.query);
             // send the req obj back
             res.status(200).send(req.query);
