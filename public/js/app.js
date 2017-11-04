@@ -164,7 +164,8 @@ app.ui = function() {
         setTimeout(function() {
             $('#imgCont > img').remove();
             var newImage = new Image();
-            newImage.src = "/screenshots/" + returnedData.filename + "." + returnedData.fileTypeExtension;
+            // /Users/william.ramirez/r_d/myGitRepos/public/screenshots
+            newImage.src = "./screenshots/" + returnedData.filename + "." + returnedData.fileTypeExtension;
             // hide loader 
             showLoader($overlay, $overlayImg, 'hide');
             $("#imgCont").append(newImage).addClass("thumbnail center-block").hide("fast").fadeIn("easeIn");
