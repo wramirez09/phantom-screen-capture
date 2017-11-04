@@ -6,11 +6,7 @@ app.use(express.static('public'));
 
 app.all("/phantom-capture/", api.phantomscreencapture.bind(this));
 
-/**
- * @param {index point} does nothing.
- */
-
-app.all("/", api.postIndex.bind(this));
+app.post("/", api.postIndex.bind(this));
 
 
 
