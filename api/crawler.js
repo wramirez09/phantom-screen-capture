@@ -29,10 +29,10 @@ module.exports.crawl = function(req, res) {
 
     // request call 
     request(pageToVisit, function(error, response, body, host) {
+
         if (error) {
             console.log("Error: " + error);
         }
-
 
         // Check status code (200 is HTTP OK)
         console.log("Status code: " + response.statusCode);
@@ -59,6 +59,7 @@ module.exports.crawl = function(req, res) {
                 var host = extractHostname(pageToVisit);
                 return host + link;
             });
+            
             console.log("new array of urls", newArray);
 
             // console.log(newArray, 'new array_links ');
