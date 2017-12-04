@@ -27,6 +27,7 @@
   "dependencies": {
     "gulp": "^3.9.1",
     "phantom": "^4.0.0",
-    "webshot": "^0.18.0"
+    "webshot": "^0.18.0",
+    "express": "^4.14.1"
   }
 }
