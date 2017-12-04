@@ -8,8 +8,8 @@ app.all("/phantom-capture/", api.phantomscreencapture.bind(this));
 
 app.post("/", api.postIndex.bind(this));
 
+var port = process.env.PORT || 3069;
 
-
-app.listen(3069, function(req, res) {
-    console.log('app listening on port 3069!')
+app.listen(port, function(req, res) {
+    console.log('app listening on port' + port);
 });
