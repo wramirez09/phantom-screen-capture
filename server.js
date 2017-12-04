@@ -10,6 +10,6 @@ app.post("/", api.postIndex.bind(this));
 
 
 
-// app.listen(3069, function(req, res) {
-//     console.log('app listening on port 3069!')
-// });
+app.listen(3069, function(req, res) {
+    console.log('app listening on port 3069!')
+});
