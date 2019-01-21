@@ -1,13 +1,11 @@
 var express = require('express')
 var app = express();
-var webshot = require('webshot');
+// var webshot = require('webshot');
+const puppeteer = require('puppeteer');
 var zipfiles = require('./zipfiles');
 var crawler = require('./crawler');
 var options = require('./options');
 module.exports.singleshot = function(req, res) {
-
-
-    console.log("taking a single screenshot", req.query);
     
     var urly = req.query.singleurl,
         userAgent = req.query.userAgent,
@@ -46,16 +44,14 @@ module.exports.singleshot = function(req, res) {
 
     } else {
 
-        webshot(urly, './public/screenshots/' + finalFileName, options.options(req, res), function(err) {
-            if (err) {
-                console.log(err, "err")
-            }
-
-            console.log("webshot called");
-
-            // send the modified req obj back
-            res.status(200).send(req.query);
-        });
+        (async () => {
+            const browser = await puppeteer.launch();
+            const page = await browser.newPage();
+            await page.goto(urly);
+            await page.screenshot({path: "./public/ss/" + finalFileName, fullPage: true });
+            await res.status(200).send(req.query);
+            await browser.close();
+          })();
     }
 
 }

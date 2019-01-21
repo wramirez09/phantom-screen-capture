@@ -2,7 +2,7 @@ var request = require('request');
 var cheerio = require('cheerio');
 var URL = require('url-parse');
 var multishot = require('./multishot');
-
+var getAllInternalLink = require('./getAllInternalLink');
 
 
 module.exports.crawl = function(req, res) {
@@ -35,7 +35,6 @@ module.exports.crawl = function(req, res) {
         }
 
         // Check status code (200 is HTTP OK)
-        console.log("Status code: " + response.statusCode);
         if (response.statusCode === 200) {
 
             // Parse the document body
@@ -43,28 +42,23 @@ module.exports.crawl = function(req, res) {
             var array_links = [];
             links = $('a'); //jquery get all hyperlinks
 
-            //create the array - using jquery gungdum style 
+            //create the array
             $(links).each(function(i, link) {
                 array_links.push($(link).attr('href'));
             });
 
-            // filter to only the internal links
-            array_links = array_links.filter(function(c) {
-                return !c.match(/^(?:https?:|www\.)/)
-            });
-
-
-            // add back domain to relative urls in order for webshot to proces them.
-            var newArray = array_links.map(function(link) {
+            var internalLinks = getAllInternalLink.getAllInternalLink(array_links, pageToVisit);
+            
+            //add back domain to relative urls in order for webshot to proces them.
+            var newArrayofInternalLinks = internalLinks.map(function(link) {
                 var host = extractHostname(pageToVisit);
                 return host + link;
             });
             
-            console.log("new array of urls", newArray);
+            console.log("new array of urls", newArrayofInternalLinks);
 
-            // console.log(newArray, 'new array_links ');
-            req.query.multiurl = newArray.toLocaleString();
-            multishot.multishot(req, res);
+            req.query.multiurl = newArrayofInternalLinks;
+            multishot.multishot(req, res, extractHostname(pageToVisit));
 
         }
     });

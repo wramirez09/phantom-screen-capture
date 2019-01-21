@@ -1,6 +1,7 @@
 var shell = require("shelljs");
 
 module.exports.zipit = function(path, req, res) {
+    
     if (shell) {
         console.log(req, 'req.query');
 
