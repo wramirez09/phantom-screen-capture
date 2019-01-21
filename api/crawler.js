@@ -18,7 +18,7 @@ module.exports.crawl = function(req, res) {
             hostname = arrayurl[0] + "//" + arrayurl[2]
                 // hostname = url.split('/')[2];
         } else {
-            hostname = url.split('/')[0];
+            // hostname = url.split('/')[0];
         }
 
         //find & remove "?"
@@ -55,7 +55,8 @@ module.exports.crawl = function(req, res) {
                 return host + link;
             });
             
-            console.log("new array of urls", newArrayofInternalLinks);
+            // console.log(newArrayofInternalLinks);
+
 
             req.query.multiurl = newArrayofInternalLinks;
             multishot.multishot(req, res, extractHostname(pageToVisit));

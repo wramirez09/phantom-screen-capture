@@ -8,15 +8,20 @@ module.exports.getAllInternalLink = function (array) {
 
     array.filter((link) => {
 
+
         if (link) {
-            if (link.lastIndexOf("/") <= 0) {
+            if (link.lastIndexOf("/") == 0) {
                 newArrayOfInternalLinks.push(link)
-            }
-            else {
             }
         }
     })
+    
+    let unique_array = newArrayOfInternalLinks.filter(function(elem, index, self) {
+        return index == self.indexOf(elem);
+    });
 
-    return newArrayOfInternalLinks;
+    console.log(unique_array);
+
+    return unique_array;
 
 }

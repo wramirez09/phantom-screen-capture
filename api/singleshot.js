@@ -34,23 +34,31 @@ module.exports.singleshot = function(req, res) {
     req.query.fileTypeExtension = fileTypeExtension;
     req.query.filename = filename
 
-    zipfiles.removefiles();
+    // zipfiles.removefiles();
 
-    zipfiles.removezip();
+    // zipfiles.removezip();
 
     if (req.query.crawler == "true") {
         // crawler
         crawler.crawl(req, res);
 
     } else {
+        
+        // var dir = host.replace(/(^\w+:|^)\/\//, '');
+
+        // shell.mkdir(`./public/ss/${dir}`);
 
         (async () => {
+
+            await console.log(`shooting ${finalFileName}`);
             const browser = await puppeteer.launch();
             const page = await browser.newPage();
+            await page.setViewport({width: parseInt (req.query.screenWidth, 10), height: parseInt (req.query.screenHeight, 10)})
             await page.goto(urly);
             await page.screenshot({path: "./public/ss/" + finalFileName, fullPage: true });
             await res.status(200).send(req.query);
             await browser.close();
+            
           })();
     }
 

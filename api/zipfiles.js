@@ -20,10 +20,10 @@ module.exports.zipit = function(path, req, res) {
 
 module.exports.removefiles = function() {
     // remove all old screenshot in directory  
-    shell.exec('rm -rf ./public/screenshots/', function() {});
+    shell.exec('rm -rf ./public/ss/', function() {});
 }
 
 module.exports.removezip = function() {
     // remove all old screenshot in directory  
-    shell.exec('rm -rf ./public/screenshots.zip', function() {});
+    shell.exec('rm -rf ./public/ss.zip', function() {});
 }
