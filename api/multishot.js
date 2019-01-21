@@ -15,8 +15,9 @@ module.exports.multishot = (req, res, host) => {
         
         var path = url.replace(/^https?\:\/\//i, "").replace(/\/$/, "") + ".png";
 
+        
             (async () => {
-                
+                console.log(`shooting ${path}`);    
                 const browser = await puppeteer.launch();
                 const page = await browser.newPage();
                 await page.setViewport({width: parseInt(req.query.screenWidth, 10) , height: parseInt(req.query.screenHeight, 10)})
