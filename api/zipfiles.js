@@ -9,7 +9,6 @@ module.exports.zipit = function(path, req, res) {
         req.query.zippath = "/screenshots.zip".toString();
 
         if (res) {
-            console.log(req.query, "request to send from zipfiles.js");
             res.status(200).send(req.query);
         }
 
