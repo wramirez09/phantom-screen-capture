@@ -1,7 +1,9 @@
 // var webshot = require('webshot');
 const puppeteer = require('puppeteer');
 var zipfiles = require('./zipfiles');
-var shell = require("shelljs");
+// var shell = require("shelljs");
+
+const fs = require('fs')
 
 process.setMaxListeners(0);
 
@@ -9,7 +11,10 @@ module.exports.multishot = (req, res, host) => {
 
     var dir = host.replace(/(^\w+:|^)\/\//, '');
 
-    shell.mkdir(`./public/ss/${dir}`);
+    // shell.mkdir(`./public/ss/${dir}`);
+    fs.mkdir(`./public/ss/${dir}`, ()=>{
+        console.log('dir created')
+    });
 
     req.query.multiurl.forEach((url, i) => {
         
