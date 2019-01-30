@@ -4,21 +4,12 @@ var api = require('./api/api');
 
 app.use(express.static('public'));
 
-/**
- * @param {end point} the endooint that process the screen shot
- 
- */
-
 app.all("/phantom-capture/", api.phantomscreencapture.bind(this));
 
-/**
- * @param {index point} does nothing.
- */
+app.post("/", api.postIndex.bind(this));
 
-app.all("/", api.postIndex.bind(this));
+var port = process.env.PORT || 3069;
 
-
-
-app.listen(3100, function(req, res) {
-    console.log('app listening on port 3100!')
+app.listen(port, function(req, res) {
+    console.log('app listening on port ' + port);
 });

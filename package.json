@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "phantom screen-shot api",
   "main": "index.js",
+  "engines": {
+    "node": "6.9.4",
+    "npm": "3.10.10"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
@@ -10,12 +14,26 @@
   "author": "will ramirez",
   "license": "MIT",
   "devDependencies": {
+    "cheerio": "^1.0.0-rc.1",
     "express": "^4.14.1",
+    "gulp": "^3.9.1",
+    "gulp-sass": "^3.1.0",
     "node-phantom": "^0.2.5",
-    "phantom": "^4.0.0"
+    "phantom": "^4.0.0",
+    "request": "^2.81.0",
+    "shelljs": "^0.7.7",
+    "url-parse": "^1.1.9"
   },
   "dependencies": {
+    "cheerio": "^1.0.0-rc.1",
+    "express": "^4.14.1",
+    "gulp": "^3.9.1",
+    "node-phantom": "^0.2.5",
     "phantom": "^4.0.0",
+    "puppeteer": "^1.11.0",
+    "shelljs": "^0.7.7",
+    "sitemap-generator": "^8.3.2",
+    "url-parse": "^1.1.9",
     "webshot": "^0.18.0"
   }
 }
