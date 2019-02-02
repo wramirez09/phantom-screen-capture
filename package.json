@@ -29,7 +29,6 @@
     "puppeteer": "^1.11.0",
     "shelljs": "^0.7.7",
     "sitemap-generator": "^8.3.2",
-    "url-parse": "^1.1.9",
-    "webshot": "^0.18.0"
+    "url-parse": "^1.1.9"
   }
 }
