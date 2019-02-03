@@ -12,6 +12,7 @@ app.use(function(req, res, next) {
 
 module.exports.postIndex = function(req, res) {
     console.log('postIndex')
+    res.send({"test":"test"});
 }
 
 module.exports.phantomscreencapture = function(req, res) {
