@@ -1,7 +1,7 @@
 # phantom-screen-capture
 
 
-simple api using webshot to take screenshots via a web based front end. 
+simple api using puppatter to take screenshots via a web based front end. 
 
 ## installation 
 - Download and or extract files
