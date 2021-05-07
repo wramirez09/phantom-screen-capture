@@ -20,7 +20,7 @@
     "gulp-sass": "^3.1.0",
     "request": "^2.81.0",
     "shelljs": "^0.7.7",
-    "url-parse": "^1.1.9"
+    "url-parse": "^1.5.0"
   },
   "dependencies": {
     "cheerio": "^1.0.0-rc.1",
@@ -29,6 +29,6 @@
     "puppeteer": "^1.11.0",
     "shelljs": "^0.7.7",
     "sitemap-generator": "^8.3.2",
-    "url-parse": "^1.1.9"
+    "url-parse": "^1.5.0"
   }
 }
